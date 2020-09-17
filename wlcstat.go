@@ -10,45 +10,48 @@ import (
 )
 
 const (
-	//AP 
-	apNameOid	= "1.3.6.1.4.1.9.9.513.1.1.1.1.5"
-        apNameOidPrefix	= ".1.3.6.1.4.1.9.9.513.1.1.1.1.5."
-	apUpTimeOid	= "1.3.6.1.4.1.9.9.513.1.1.1.1.6"
-	apUpTimeOidPrefix = ".1.3.6.1.4.1.9.9.513.1.1.1.1.6."
-	apPowerStatusOid	= "1.3.6.1.4.1.9.9.513.1.1.1.1.20"
-        apPowerStatusOidPrefix	= ".1.3.6.1.4.1.9.9.513.1.1.1.1.20."
-	apAssociatedClientCountOid	= "1.3.6.1.4.1.9.9.513.1.1.1.1.54"
-        apAssociatedClientCountOidPrefix	 = ".1.3.6.1.4.1.9.9.513.1.1.1.1.54."
-	apMemoryCurrentUsageOid	= "1.3.6.1.4.1.9.9.513.1.1.1.1.55"
-        apMemoryCurrentUsageOidPrefix	= ".1.3.6.1.4.1.9.9.513.1.1.1.1.55."
-	apCpuCurrentUsageOid	= "1.3.6.1.4.1.9.9.513.1.1.1.1.57"
-        apCpuCurrentUsageOidPrefix	= ".1.3.6.1.4.1.9.9.513.1.1.1.1.57."
-	apConnectCountOid	= "1.3.6.1.4.1.9.9.513.1.1.1.1.66"
-        apConnectCountOidPrefix	= ".1.3.6.1.4.1.9.9.513.1.1.1.1.66."
-	apReassocFailCountOid	= "1.3.6.1.4.1.9.9.513.1.1.1.1.68"
-        apReassocFailCountOidPrefix	= ".1.3.6.1.4.1.9.9.513.1.1.1.1.68."
-	apAssocFailTimesOid	= "1.3.6.1.4.1.9.9.513.1.1.1.1.75"
-        apAssocFailTimesOidPrefix	= ".1.3.6.1.4.1.9.9.513.1.1.1.1.75."
-	apEthernetIfInputErrorsOid	= "1.3.6.1.4.1.9.9.513.1.2.2.1.17"
-        apEthernetIfInputErrorsOidPrefix	 = ".1.3.6.1.4.1.9.9.513.1.2.2.1.17."
-	apEthernetIfOutputErrorsOid      = "1.3.6.1.4.1.9.9.513.1.2.2.1.31"
-	apEthernetIfOutputErrorsOidPrefix         = ".1.3.6.1.4.1.9.9.513.1.2.2.1.31."
+	//AP
+	apNameOid                         = "1.3.6.1.4.1.9.9.513.1.1.1.1.5"
+	apNameOidPrefix                   = ".1.3.6.1.4.1.9.9.513.1.1.1.1.5."
+	apUpTimeOid                       = "1.3.6.1.4.1.9.9.513.1.1.1.1.6"
+	apUpTimeOidPrefix                 = ".1.3.6.1.4.1.9.9.513.1.1.1.1.6."
+	apPowerStatusOid                  = "1.3.6.1.4.1.9.9.513.1.1.1.1.20"
+	apPowerStatusOidPrefix            = ".1.3.6.1.4.1.9.9.513.1.1.1.1.20."
+	apAssociatedClientCountOid        = "1.3.6.1.4.1.9.9.513.1.1.1.1.54"
+	apAssociatedClientCountOidPrefix  = ".1.3.6.1.4.1.9.9.513.1.1.1.1.54."
+	apMemoryCurrentUsageOid           = "1.3.6.1.4.1.9.9.513.1.1.1.1.55"
+	apMemoryCurrentUsageOidPrefix     = ".1.3.6.1.4.1.9.9.513.1.1.1.1.55."
+	apCpuCurrentUsageOid              = "1.3.6.1.4.1.9.9.513.1.1.1.1.57"
+	apCpuCurrentUsageOidPrefix        = ".1.3.6.1.4.1.9.9.513.1.1.1.1.57."
+	apConnectCountOid                 = "1.3.6.1.4.1.9.9.513.1.1.1.1.66"
+	apConnectCountOidPrefix           = ".1.3.6.1.4.1.9.9.513.1.1.1.1.66."
+	apReassocFailCountOid             = "1.3.6.1.4.1.9.9.513.1.1.1.1.68"
+	apReassocFailCountOidPrefix       = ".1.3.6.1.4.1.9.9.513.1.1.1.1.68."
+	apAssocFailTimesOid               = "1.3.6.1.4.1.9.9.513.1.1.1.1.75"
+	apAssocFailTimesOidPrefix         = ".1.3.6.1.4.1.9.9.513.1.1.1.1.75."
+	apEthernetIfInputErrorsOid        = "1.3.6.1.4.1.9.9.513.1.2.2.1.17"
+	apEthernetIfInputErrorsOidPrefix  = ".1.3.6.1.4.1.9.9.513.1.2.2.1.17."
+	apEthernetIfOutputErrorsOid       = "1.3.6.1.4.1.9.9.513.1.2.2.1.31"
+	apEthernetIfOutputErrorsOidPrefix = ".1.3.6.1.4.1.9.9.513.1.2.2.1.31."
+	apHaPrimaryUnitOid                = "10.12.99.2 1.3.6.1.4.1.9.9.198888.0.1.12"
+	apHaPrimaryUnitOidPrefix          = "10.12.99.2 1.3.6.1.4.1.9.9.198888.0.1.12."
 )
 
 type WlcStats struct {
-        TS                   int64
-        ApIndex string
-        ApName  string
-	ApUpTime	int
-        ApPowerStatus   int
-        ApAssociatedClientCount int
-        ApEthernetIfInputErrors int
-	ApEthernetIfOutputErrors	int
-	ApMemoryCurrentUsage	int
-	ApCpuCurrentUsage	int
-	ApConnectCount	int
-	ApReassocFailCount	int
-	ApAssocFailTimes	int
+	TS                       int64
+	ApIndex                  string
+	ApName                   string
+	ApUpTime                 int
+	ApPowerStatus            int
+	ApAssociatedClientCount  int
+	ApEthernetIfInputErrors  int
+	ApEthernetIfOutputErrors int
+	ApMemoryCurrentUsage     int
+	ApCpuCurrentUsage        int
+	ApConnectCount           int
+	ApReassocFailCount       int
+	ApAssocFailTimes         int
+	ApHaPrimaryUnit          int
 }
 
 //type WlcStats struct {
@@ -86,7 +89,7 @@ func ListWlcStats(ip, community string, timeout int, ignoreIface []string, retry
 	}()
 	chApNameList := make(chan []gosnmp.SnmpPDU)
 	chApUpTimeList := make(chan []gosnmp.SnmpPDU)
-        chApPowerStatusList := make(chan []gosnmp.SnmpPDU)
+	chApPowerStatusList := make(chan []gosnmp.SnmpPDU)
 	chApAssociatedClientCountList := make(chan []gosnmp.SnmpPDU)
 	chApEthernetIfInputErrorsList := make(chan []gosnmp.SnmpPDU)
 	chApEthernetIfOutputErrorsList := make(chan []gosnmp.SnmpPDU)
@@ -95,53 +98,57 @@ func ListWlcStats(ip, community string, timeout int, ignoreIface []string, retry
 	chApConnectCountList := make(chan []gosnmp.SnmpPDU)
 	chApReassocFailCountList := make(chan []gosnmp.SnmpPDU)
 	chApAssocFailTimesList := make(chan []gosnmp.SnmpPDU)
+	chapHaPrimaryUnitList := make(chan []gosnmp.SnmpPDU)
 
-        limitCh <- true
+	limitCh <- true
 	go ListApName(ip, community, timeout, chApNameList, retry, limitCh)
 	time.Sleep(5 * time.Millisecond)
-        limitCh <- true
-        go ListApUpTime(ip, community, timeout, chApUpTimeList, retry, limitCh)
-        time.Sleep(5 * time.Millisecond)
-        limitCh <- true
-        go ListApPowerStatus(ip, community, timeout, chApPowerStatusList, retry, limitCh)
-        time.Sleep(5 * time.Millisecond)
-        limitCh <- true
-        go ListApAssociatedClientCount(ip, community, timeout, chApAssociatedClientCountList, retry, limitCh)
-        time.Sleep(5 * time.Millisecond)
-        limitCh <- true
-        go ListApEthernetIfInputErrors(ip, community, timeout, chApEthernetIfInputErrorsList, retry, limitCh)
-        time.Sleep(5 * time.Millisecond)
-        limitCh <- true
-        go ListApEthernetIfOutputErrors(ip, community, timeout, chApEthernetIfOutputErrorsList, retry, limitCh)
-        time.Sleep(5 * time.Millisecond)
-        limitCh <- true
-        go ListApMemoryCurrentUsage(ip, community, timeout, chApMemoryCurrentUsageList, retry, limitCh)
-        time.Sleep(5 * time.Millisecond)
-        limitCh <- true
-        go ListApCpuCurrentUsage(ip, community, timeout, chApCpuCurrentUsageList, retry, limitCh)
-        time.Sleep(5 * time.Millisecond)
-        limitCh <- true
-        go ListApConnectCount(ip, community, timeout, chApConnectCountList, retry, limitCh)
-        time.Sleep(5 * time.Millisecond)
-        limitCh <- true
-        go ListApReassocFailCount(ip, community, timeout, chApReassocFailCountList, retry, limitCh)
-        time.Sleep(5 * time.Millisecond)
-        limitCh <- true
-        go ListApAssocFailTimes(ip, community, timeout, chApAssocFailTimesList, retry, limitCh)
-        time.Sleep(5 * time.Millisecond)
-
+	limitCh <- true
+	go ListApUpTime(ip, community, timeout, chApUpTimeList, retry, limitCh)
+	time.Sleep(5 * time.Millisecond)
+	limitCh <- true
+	go ListApPowerStatus(ip, community, timeout, chApPowerStatusList, retry, limitCh)
+	time.Sleep(5 * time.Millisecond)
+	limitCh <- true
+	go ListApAssociatedClientCount(ip, community, timeout, chApAssociatedClientCountList, retry, limitCh)
+	time.Sleep(5 * time.Millisecond)
+	limitCh <- true
+	go ListApEthernetIfInputErrors(ip, community, timeout, chApEthernetIfInputErrorsList, retry, limitCh)
+	time.Sleep(5 * time.Millisecond)
+	limitCh <- true
+	go ListApEthernetIfOutputErrors(ip, community, timeout, chApEthernetIfOutputErrorsList, retry, limitCh)
+	time.Sleep(5 * time.Millisecond)
+	limitCh <- true
+	go ListApMemoryCurrentUsage(ip, community, timeout, chApMemoryCurrentUsageList, retry, limitCh)
+	time.Sleep(5 * time.Millisecond)
+	limitCh <- true
+	go ListApCpuCurrentUsage(ip, community, timeout, chApCpuCurrentUsageList, retry, limitCh)
+	time.Sleep(5 * time.Millisecond)
+	limitCh <- true
+	go ListApConnectCount(ip, community, timeout, chApConnectCountList, retry, limitCh)
+	time.Sleep(5 * time.Millisecond)
+	limitCh <- true
+	go ListApReassocFailCount(ip, community, timeout, chApReassocFailCountList, retry, limitCh)
+	time.Sleep(5 * time.Millisecond)
+	limitCh <- true
+	go ListApAssocFailTimes(ip, community, timeout, chApAssocFailTimesList, retry, limitCh)
+	time.Sleep(5 * time.Millisecond)
+	limitCh <- true
+	go ListHaPrimaryUnit(ip, community, timeout, chapHaPrimaryUnitList, retry, limitCh)
+	time.Sleep(5 * time.Millisecond)
 
 	apNameList := <-chApNameList
 	apUpTimeList := <-chApUpTimeList
 	apPowerStatusList := <-chApPowerStatusList
-	apAssociatedClientCountList := <-chApAssociatedClientCountList	
+	apAssociatedClientCountList := <-chApAssociatedClientCountList
 	apEthernetIfInputErrorsList := <-chApEthernetIfInputErrorsList
 	apEthernetIfOutputErrorsList := <-chApEthernetIfOutputErrorsList
 	apMemoryCurrentUsageList := <-chApMemoryCurrentUsageList
 	apCpuCurrentUsageList := <-chApCpuCurrentUsageList
-	apConnectCountList:= <-chApConnectCountList
+	apConnectCountList := <-chApConnectCountList
 	apReassocFailCountList := <-chApReassocFailCountList
 	apAssocFailTimesList := <-chApAssocFailTimesList
+	apHaPrimaryUnitList := <-chapHaPrimaryUnitList
 
 	if len(apNameList) > 0 && len(apPowerStatusList) > 0 {
 		now := time.Now().Unix()
@@ -164,69 +171,75 @@ func ListWlcStats(ip, community string, timeout int, ignoreIface []string, retry
 					}
 				}
 
-                                for ti, apUpTimePDU := range apUpTimeList {
-                                        if strings.Replace(apUpTimePDU.Name, apUpTimeOidPrefix, "", 1) == apIndexStr {
-                                                wlcStats.ApUpTime = apUpTimeList[ti].Value.(int)
-                                                break
-                                        }
-                                }
+				for ti, apUpTimePDU := range apUpTimeList {
+					if strings.Replace(apUpTimePDU.Name, apUpTimeOidPrefix, "", 1) == apIndexStr {
+						wlcStats.ApUpTime = apUpTimeList[ti].Value.(int)
+						break
+					}
+				}
 
-                                for ti, apAssociatedClientCountPDU := range apAssociatedClientCountList {
-                                        if strings.Replace(apAssociatedClientCountPDU.Name, apAssociatedClientCountOidPrefix, "", 1) == apIndexStr {
-                                                wlcStats.ApAssociatedClientCount = apAssociatedClientCountList[ti].Value.(int)
-                                                break
-                                        }
-                                }
-	
-                                for ti, apEthernetIfInputErrorsPDU := range apEthernetIfInputErrorsList {
-                                        if strings.Replace(apEthernetIfInputErrorsPDU.Name, apEthernetIfInputErrorsOidPrefix, "", 1) == apIndexStr {
-                                                wlcStats.ApEthernetIfInputErrors = apEthernetIfInputErrorsList[ti].Value.(int)
-                                                break
-                                        }
-                                }
+				for ti, apAssociatedClientCountPDU := range apAssociatedClientCountList {
+					if strings.Replace(apAssociatedClientCountPDU.Name, apAssociatedClientCountOidPrefix, "", 1) == apIndexStr {
+						wlcStats.ApAssociatedClientCount = apAssociatedClientCountList[ti].Value.(int)
+						break
+					}
+				}
 
-                                for ti, apEthernetIfOutputErrorsPDU := range apEthernetIfOutputErrorsList {
-                                        if strings.Replace(apEthernetIfOutputErrorsPDU.Name, apEthernetIfOutputErrorsOidPrefix, "", 1) == apIndexStr {
-                                                wlcStats.ApEthernetIfOutputErrors = apEthernetIfOutputErrorsList[ti].Value.(int)
-                                                break
-                                        }
-                                }
+				for ti, apEthernetIfInputErrorsPDU := range apEthernetIfInputErrorsList {
+					if strings.Replace(apEthernetIfInputErrorsPDU.Name, apEthernetIfInputErrorsOidPrefix, "", 1) == apIndexStr {
+						wlcStats.ApEthernetIfInputErrors = apEthernetIfInputErrorsList[ti].Value.(int)
+						break
+					}
+				}
 
-                                for ti, apMemoryCurrentUsagePDU := range apMemoryCurrentUsageList {
-                                        if strings.Replace(apMemoryCurrentUsagePDU.Name, apMemoryCurrentUsageOidPrefix, "", 1) == apIndexStr {
-                                                wlcStats.ApMemoryCurrentUsage = apMemoryCurrentUsageList[ti].Value.(int)
-                                                break
-                                        }
-                                }
+				for ti, apEthernetIfOutputErrorsPDU := range apEthernetIfOutputErrorsList {
+					if strings.Replace(apEthernetIfOutputErrorsPDU.Name, apEthernetIfOutputErrorsOidPrefix, "", 1) == apIndexStr {
+						wlcStats.ApEthernetIfOutputErrors = apEthernetIfOutputErrorsList[ti].Value.(int)
+						break
+					}
+				}
 
-                                for ti, apCpuCurrentUsagePDU := range apCpuCurrentUsageList {
-                                        if strings.Replace(apCpuCurrentUsagePDU.Name, apCpuCurrentUsageOidPrefix, "", 1) == apIndexStr {
-                                                wlcStats.ApCpuCurrentUsage = apCpuCurrentUsageList[ti].Value.(int)
-                                                break
-                                        }
-                                }
+				for ti, apMemoryCurrentUsagePDU := range apMemoryCurrentUsageList {
+					if strings.Replace(apMemoryCurrentUsagePDU.Name, apMemoryCurrentUsageOidPrefix, "", 1) == apIndexStr {
+						wlcStats.ApMemoryCurrentUsage = apMemoryCurrentUsageList[ti].Value.(int)
+						break
+					}
+				}
 
-                                for ti, apConnectCountPDU := range apConnectCountList {
-                                        if strings.Replace(apConnectCountPDU.Name, apConnectCountOidPrefix, "", 1) == apIndexStr {
-                                                wlcStats.ApConnectCount = apConnectCountList[ti].Value.(int)
-                                                break
-                                        }
-                                }
+				for ti, apCpuCurrentUsagePDU := range apCpuCurrentUsageList {
+					if strings.Replace(apCpuCurrentUsagePDU.Name, apCpuCurrentUsageOidPrefix, "", 1) == apIndexStr {
+						wlcStats.ApCpuCurrentUsage = apCpuCurrentUsageList[ti].Value.(int)
+						break
+					}
+				}
 
-                                for ti, apReassocFailCountPDU := range apReassocFailCountList {
-                                        if strings.Replace(apReassocFailCountPDU.Name, apReassocFailCountOidPrefix, "", 1) == apIndexStr {
-                                                wlcStats.ApReassocFailCount = apReassocFailCountList[ti].Value.(int)
-                                                break
-                                        }
-                                }
+				for ti, apConnectCountPDU := range apConnectCountList {
+					if strings.Replace(apConnectCountPDU.Name, apConnectCountOidPrefix, "", 1) == apIndexStr {
+						wlcStats.ApConnectCount = apConnectCountList[ti].Value.(int)
+						break
+					}
+				}
 
-                                for ti, apAssocFailTimesPDU := range apAssocFailTimesList {
-                                        if strings.Replace(apAssocFailTimesPDU.Name, apAssocFailTimesOidPrefix, "", 1) == apIndexStr {
-                                                wlcStats.ApAssocFailTimes = apAssocFailTimesList[ti].Value.(int)
-                                                break
-                                        }
-                                }
- 
+				for ti, apReassocFailCountPDU := range apReassocFailCountList {
+					if strings.Replace(apReassocFailCountPDU.Name, apReassocFailCountOidPrefix, "", 1) == apIndexStr {
+						wlcStats.ApReassocFailCount = apReassocFailCountList[ti].Value.(int)
+						break
+					}
+				}
+
+				for ti, apAssocFailTimesPDU := range apAssocFailTimesList {
+					if strings.Replace(apAssocFailTimesPDU.Name, apAssocFailTimesOidPrefix, "", 1) == apIndexStr {
+						wlcStats.ApAssocFailTimes = apAssocFailTimesList[ti].Value.(int)
+						break
+					}
+				}
+
+				for ti, apHaPrimaryUnitPDU := range apHaPrimaryUnitList {
+					if strings.Replace(apHaPrimaryUnitPDU.Name, apHaPrimaryUnitOidPrefix, "", 1) == apIndexStr {
+						wlcStats.ApHaPrimaryUnit = apHaPrimaryUnitList[ti].Value.(int)
+						break
+					}
+				}
 
 				wlcStats.TS = now
 				wlcStats.ApName = apName
@@ -234,54 +247,56 @@ func ListWlcStats(ip, community string, timeout int, ignoreIface []string, retry
 			}
 		}
 	}
-        return wlcStatsList, nil
+	return wlcStatsList, nil
 }
 
 func ListApName(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
-        RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apNameOid)
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apNameOid)
 }
 
 func ListApPowerStatus(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
-        RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apPowerStatusOid)
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apPowerStatusOid)
 }
 
 func ListApUpTime(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
-        RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apUpTimeOid)
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apUpTimeOid)
 }
 
 func ListApAssociatedClientCount(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
-        RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apAssociatedClientCountOid)
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apAssociatedClientCountOid)
 }
 
 func ListApEthernetIfInputErrors(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
-        RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apEthernetIfInputErrorsOid)
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apEthernetIfInputErrorsOid)
 }
 
 func ListApEthernetIfOutputErrors(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
-        RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apEthernetIfOutputErrorsOid)
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apEthernetIfOutputErrorsOid)
 }
 
 func ListApMemoryCurrentUsage(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
-        RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apMemoryCurrentUsageOid)
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apMemoryCurrentUsageOid)
 }
 
 func ListApCpuCurrentUsage(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
-        RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apCpuCurrentUsageOid)
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apCpuCurrentUsageOid)
 }
 
 func ListApConnectCount(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
-        RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apConnectCountOid)
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apConnectCountOid)
 }
 
 func ListApReassocFailCount(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
-        RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apReassocFailCountOid)
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apReassocFailCountOid)
 }
 
 func ListApAssocFailTimes(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
-        RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apAssocFailTimesOid)
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apAssocFailTimesOid)
 }
 
-
+func ListHaPrimaryUnit(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apAssocFailTimesOid)
+}
 
 //func RunSnmpRetry(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool, oid string) {
 //
