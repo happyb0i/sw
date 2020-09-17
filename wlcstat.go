@@ -34,7 +34,7 @@ const (
 	apEthernetIfOutputErrorsOid       = "1.3.6.1.4.1.9.9.513.1.2.2.1.31"
 	apEthernetIfOutputErrorsOidPrefix = ".1.3.6.1.4.1.9.9.513.1.2.2.1.31."
 	apHaPrimaryUnitOid                = "10.12.99.2 1.3.6.1.4.1.9.9.198888.0.1.12"
-	apHaPrimaryUnitOidPrefix          = "10.12.99.2 1.3.6.1.4.1.9.9.198888.0.1.12."
+	apHaPrimaryUnitOidPrefix          = ".10.12.99.2 1.3.6.1.4.1.9.9.198888.0.1.12."
 )
 
 type WlcStats struct {
