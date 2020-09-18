@@ -295,7 +295,7 @@ func ListApAssocFailTimes(ip, community string, timeout int, ch chan []gosnmp.Sn
 }
 
 func ListHaPrimaryUnit(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
-	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apAssocFailTimesOid)
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apHaPrimaryUnitOid)
 }
 
 //func RunSnmpRetry(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool, oid string) {
