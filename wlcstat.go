@@ -150,6 +150,14 @@ func ListWlcStats(ip, community string, timeout int, ignoreIface []string, retry
 	apAssocFailTimesList := <-chApAssocFailTimesList
 	apHaPrimaryUnitList := <-chapHaPrimaryUnitList
 
+	var wlcStats WlcStats
+	now := time.Now().Unix()
+	wlcStats.TS = now
+	wlcStats.ApName = "server"
+	wlcStats.ApHaPrimaryUnit = apHaPrimaryUnitList[0].Value.(int)
+	log.Println("wlcStats.ApHaPrimaryUnit:", wlcStats.ApHaPrimaryUnit)
+	wlcStatsList = append(wlcStatsList, wlcStats)
+
 	if len(apNameList) > 0 && len(apPowerStatusList) > 0 {
 		now := time.Now().Unix()
 
@@ -230,13 +238,6 @@ func ListWlcStats(ip, community string, timeout int, ignoreIface []string, retry
 				for ti, apAssocFailTimesPDU := range apAssocFailTimesList {
 					if strings.Replace(apAssocFailTimesPDU.Name, apAssocFailTimesOidPrefix, "", 1) == apIndexStr {
 						wlcStats.ApAssocFailTimes = apAssocFailTimesList[ti].Value.(int)
-						break
-					}
-				}
-
-				for ti, apHaPrimaryUnitPDU := range apHaPrimaryUnitList {
-					if strings.Replace(apHaPrimaryUnitPDU.Name, apHaPrimaryUnitOidPrefix, "", 1) == apIndexStr {
-						wlcStats.ApHaPrimaryUnit = apHaPrimaryUnitList[ti].Value.(int)
 						break
 					}
 				}
