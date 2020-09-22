@@ -35,6 +35,8 @@ const (
 	apEthernetIfOutputErrorsOidPrefix = ".1.3.6.1.4.1.9.9.513.1.2.2.1.31."
 	apHaPrimaryUnitOid                = "1.3.6.1.4.1.9.9.198888.0.1.12"
 	apHaPrimaryUnitOidPrefix          = ".1.3.6.1.4.1.9.9.198888.0.1.12."
+	RFStatusPeerUnitStateOid          = "1.3.6.1.4.1.9.9.176.1.1.4"
+	RFStatusPeerUnitStateOidPrefix    = ".1.3.6.1.4.1.9.9.176.1.1.4."
 )
 
 type WlcStats struct {
@@ -52,6 +54,7 @@ type WlcStats struct {
 	ApReassocFailCount       int
 	ApAssocFailTimes         int
 	ApHaPrimaryUnit          int
+	RFStatusPeerUnitState    int
 }
 
 //type WlcStats struct {
@@ -99,6 +102,7 @@ func ListWlcStats(ip, community string, timeout int, ignoreIface []string, retry
 	chApReassocFailCountList := make(chan []gosnmp.SnmpPDU)
 	chApAssocFailTimesList := make(chan []gosnmp.SnmpPDU)
 	chapHaPrimaryUnitList := make(chan []gosnmp.SnmpPDU)
+	chRFStatusPeerUnitStateList := make(chan []gosnmp.SnmpPDU)
 
 	limitCh <- true
 	go ListApName(ip, community, timeout, chApNameList, retry, limitCh)
@@ -136,6 +140,9 @@ func ListWlcStats(ip, community string, timeout int, ignoreIface []string, retry
 	limitCh <- true
 	go ListHaPrimaryUnit(ip, community, timeout, chapHaPrimaryUnitList, retry, limitCh)
 	time.Sleep(5 * time.Millisecond)
+	limitCh <- true
+	go ListRFStatusPeerUnitState(ip, community, timeout, chRFStatusPeerUnitStateList, retry, limitCh)
+	time.Sleep(5 * time.Millisecond)
 
 	apNameList := <-chApNameList
 	apUpTimeList := <-chApUpTimeList
@@ -149,12 +156,14 @@ func ListWlcStats(ip, community string, timeout int, ignoreIface []string, retry
 	apReassocFailCountList := <-chApReassocFailCountList
 	apAssocFailTimesList := <-chApAssocFailTimesList
 	apHaPrimaryUnitList := <-chapHaPrimaryUnitList
+	RFStatusPeerUnitStateList := <-chRFStatusPeerUnitStateList
 
 	var wlcStats WlcStats
 	now := time.Now().Unix()
 	wlcStats.TS = now
 	wlcStats.ApName = "server"
 	wlcStats.ApHaPrimaryUnit = apHaPrimaryUnitList[0].Value.(int)
+	wlcStats.ApHaPrimaryUnit = RFStatusPeerUnitStateList[0].Value.(int)
 	wlcStatsList = append(wlcStatsList, wlcStats)
 
 	if len(apNameList) > 0 && len(apPowerStatusList) > 0 {
@@ -296,6 +305,10 @@ func ListApAssocFailTimes(ip, community string, timeout int, ch chan []gosnmp.Sn
 
 func ListHaPrimaryUnit(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
 	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, apHaPrimaryUnitOid)
+}
+
+func ListRFStatusPeerUnitState(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool) {
+	RunSnmpRetry(ip, community, timeout, ch, retry, limitCh, RFStatusPeerUnitStateOid)
 }
 
 //func RunSnmpRetry(ip, community string, timeout int, ch chan []gosnmp.SnmpPDU, retry int, limitCh chan bool, oid string) {
