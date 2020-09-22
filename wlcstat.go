@@ -163,7 +163,7 @@ func ListWlcStats(ip, community string, timeout int, ignoreIface []string, retry
 	wlcStats.TS = now
 	wlcStats.ApName = "server"
 	wlcStats.ApHaPrimaryUnit = apHaPrimaryUnitList[0].Value.(int)
-	wlcStats.ApHaPrimaryUnit = RFStatusPeerUnitStateList[0].Value.(int)
+	wlcStats.RFStatusPeerUnitState = RFStatusPeerUnitStateList[0].Value.(int)
 	wlcStatsList = append(wlcStatsList, wlcStats)
 
 	if len(apNameList) > 0 && len(apPowerStatusList) > 0 {
