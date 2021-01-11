@@ -61,14 +61,25 @@ func SysVendor(ip, community string, retry int, timeout int) (string, error) {
 			return "Cisco", err
 		}
 	}
-
+	
 	if strings.Contains(sysDescrLower, "cisco adaptive security appliance") {
-		version_number, err := strconv.ParseFloat(getVersionNumber(sysDescr), 32)
-		if err == nil && version_number < 9.2 {
+		version_number_one, err := strconv.ParseInt(strings.Split(getVersionNumber(sysDescr), ".")[0], 10, 32)
+		
+		if err != nil {
+			return "", err
+		}
+
+		version_number_two, err := strconv.ParseInt(strings.Split(getVersionNumber(sysDescr), ".")[1], 10, 32)
+
+		if err != nil {
+			return "", err
+		}
+
+		if version_number_one <= 9 && version_number_two < 2 {
 			return "Cisco_ASA_OLD", err
 		}
 		return "Cisco_ASA", err
-	}
+	    }
 
 	if strings.Contains(sysDescr, "Cisco Controller") {
 		return "Cisco_WLC", err
